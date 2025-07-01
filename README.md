@@ -1,12 +1,12 @@
 
-# 🌫️ 미세먼지 오염도 예측 및 시각화 프로젝트
+# 미세먼지 오염도 예측 및 시각화 프로젝트
 
 본 프로젝트는 DMD(Dynamic Mode Decomposition)와 머신러닝 기법을 활용하여 **한국 내 미세먼지(PM10, PM2.5)** 농도를 예측하고,  
 이를 시각화하는 과정을 포함한 **환경 데이터 분석 프로젝트**입니다.
 
 ---
 
-## 📌 프로젝트 개요
+## 프로젝트 개요
 
 - **목표**  
   - 정형화된 대기오염 데이터에서 **미세먼지 예측 모델 개발**  
@@ -20,7 +20,7 @@
 
 ---
 
-## 🧪 Part 1: 데이터 전처리 및 분해
+## Part 1: 데이터 전처리 및 분해
 
 ### 1. 결측치 및 이상치 제거
 - 시간 간격이 불규칙한 구간 제거
@@ -40,7 +40,7 @@ reconstructed = dmd.reconstructed_data.real
 
 ---
 
-## 🔄 Part 2: 모델링 및 성능 평가
+## Part 2: 모델링 및 성능 평가
 
 ### ▶ 예측 방식
 - **DMD 기반 미래 데이터 예측**
@@ -59,7 +59,7 @@ reconstructed = dmd.reconstructed_data.real
 
 ---
 
-## 🗺️ Part 3: 공간 기반 시각화
+## 🗺Part 3: 공간 기반 시각화
 
 ### ▶ folium을 이용한 히트맵 비교
 
@@ -75,25 +75,9 @@ reconstructed = dmd.reconstructed_data.real
 
 - 전반적인 분포 패턴이 유사
 - 수도권 및 남부 지역에서 예측 정확도 높게 나타남
-
 ---
 
-## 📦 코드 예시 (히트맵 시각화)
-
-```python
-import folium
-from folium.plugins import HeatMap
-
-def plot_heatmap(df, name='PM10'):
-    m = folium.Map(location=[36.5, 127.5], zoom_start=7)
-    heat_data = [[row['lat'], row['lon'], row[name]] for index, row in df.iterrows()]
-    HeatMap(heat_data).add_to(m)
-    return m
-```
-
----
-
-## 🔍 프로젝트 요약
+## 프로젝트 요약
 
 - DMD를 통한 시계열 예측 기반의 **단기 오염도 예측 가능성 확인**
 - 오차 최소 시점을 활용하여 예측력 극대화
@@ -101,16 +85,8 @@ def plot_heatmap(df, name='PM10'):
 
 ---
 
-## ✅ 향후 개선 방향
+## 향후 개선 방향
 
 - 다양한 지역별 미세먼지 영향 변수 추가 (산림, 차량 통행량 등)
 - DMD 외 GRU, LSTM과의 비교 실험 진행
 - 모바일 앱과 연동한 **실시간 시각화 시스템 구축**
-
----
-
-## 🙏 마무리
-
-감사합니다.  
-본 프로젝트는 기후 데이터를 기반으로 미래 미세먼지 분포를 예측하고 시각화하는  
-**실제 환경에 적용 가능한 분석 프레임워크**입니다.
